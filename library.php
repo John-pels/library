@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
     <link rel="shortcut icon" href="images/rasmed_favicon.png" type="image/x-icon">        
     <style>
       #inner-container {
@@ -78,7 +81,7 @@
     </ul>
     <form class="navbar-form navbar-right" action="" style="margin-top:10px;">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Books" name="search">
+        <input type="text" class="form-control" placeholder="Search Books" id="search" name="search">
         <div class="input-group-btn">
           <button class="btn btn-success" type="submit">
             <i class="glyphicon glyphicon-search"></i>
@@ -88,10 +91,17 @@
     </form>
   </div>
 </nav>
+<font color='red'>sasakjsah</font>
 <div id="container">
+   
         <div id="inner-container">
+            <div id="showsearchR"></div>
+
             <div id="results"></div>
+            
+
             <div id="loader"></div>
+            
 
         </div>
     </div>
@@ -104,7 +114,7 @@
             data: "pageNumber=" + pageNumber,
             cache: false,
     		beforeSend: function() {
-                $('#loader').html('<img src="images/animated_spinner.gif" alt="reload" width="30" height="30" style="position:absolute; top:40%;left:50%;">');
+                $('#loader').html('<img src="images/animated_spinner.gif" alt="reload" width="50" height="50" style="position:absolute; top:50%;left:50%;">');
     			
             },
             success: function(html) {
@@ -119,6 +129,106 @@
     });
          </script>   
         
+        <!-- <script>
+        $("#search").keyup(function(){
+          var search_term = $(this).val();
+          $.post('includes/search.php',{ search_term: search_term }, function(data){
+                //display results
+                $("#search_results").html(data);
+          });
+        });
+        </script> -->
+<script src="js/jquery.js" type="text/javascript"></script>
 
+<script>
+    $("#search").keyup(function(){
+            //e.preventDefault();
+           var search = $(this).val();
+           if (search=='') {
+            $("#results").load("includes/getLibraryBooks.php");
+           }
+           else if (search.length < 1) {
+           // $("#showsearchR").hide();
+            $("#results").show();
+
+
+           }
+          /* else if (search.length == 0) {
+            $("#result").load("includes/getLibraryBooks.php");
+            
+           }*/
+           else{
+            $.ajax({
+                type: "POST",
+                url: "includes/searchbook.php",
+                data: {search:search},
+                success: function(data){
+                   // $("#results").hide();
+                    setTimeout(function(){
+                      //  $("#results").hide();
+                        $("#results").html(data);
+                    },200);
+                    if (data=='No book found') {
+                        $("#results").html("No Book Found");
+
+                    }
+                    
+                }
+            });
+           }
+    });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

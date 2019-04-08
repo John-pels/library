@@ -97,3 +97,4 @@ $select_tertiary = mysqli_query($con, "SELECT * FROM library WHERE book_category
 $tertiary_rows = mysqli_num_rows($select_tertiary);
 $fetch_tertiary = mysqli_fetch_array($select_primary);
 ?>
+

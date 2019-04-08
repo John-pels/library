@@ -134,7 +134,7 @@ $user_name = $fetch_user['username'];
   <!-- inline seach button starts here -->  
   <form class="navbar-form navbar-right" action="" style="line-height:25px;">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search Books">
+    <input type="text" class="form-control" placeholder="search Books" id="search" name="search">
     <div class="input-group-btn">
       <button class="btn btn-success" type="submit">
         <i class="glyphicon glyphicon-search"></i>
@@ -156,6 +156,46 @@ $user_name = $fetch_user['username'];
   
 			</div>
 		</div>
+    <script src="js/jquery.js" type="text/javascript"></script>
+
+<script>
+    $("#search").keyup(function(){
+            //e.preventDefault();
+           var search = $(this).val();
+           if (search=='') {
+            $("#results").load("../includes/getBooks.php");
+           }
+           else if (search.length < 1) {
+           // $("#showsearchR").hide();
+            $("#results").show();
+
+
+           }
+          /* else if (search.length == 0) {
+            $("#result").load("includes/getLibraryBooks.php");
+            
+           }*/
+           else{
+            $.ajax({
+                type: "POST",
+                url: "../includes/admin_searchLibrary.php",
+                data: {search:search},
+                success: function(data){
+                   // $("#results").hide();
+                    setTimeout(function(){
+                      //  $("#results").hide();
+                        $("#results").html(data);
+                    },200);
+                    if (data=='No book found') {
+                        $("#results").html("No Book Found");
+
+                    }
+                    
+                }
+            });
+           }
+    });
+</script>
 <script>
 	$(document).ready(function() {
 	$('.nav-trigger').click(function() {
@@ -171,7 +211,7 @@ $user_name = $fetch_user['username'];
             data: "pageNumber=" + pageNumber,
             cache: false,
     		beforeSend: function() {
-                $('#loader').html('<img src="images/animated_spinner.gif" alt="reload" width="30" height="30" style="position:absolute; top:40%;left:50%;">');
+                $('#loader').html('<img src="../images/animated_spinner.gif" alt="reload" width="50" height="50" style="position:absolute; top:40%;left:50%;">');
     			
             },
             success: function(html) {
@@ -217,7 +257,7 @@ $user_name = $fetch_user['username'];
           <input type="file" class="form-control" id="bookCover" name="bookCover" placeholder="Book Cover"  required="">
         </div>
          <div class="form-group">
-          <label for="exampleInputPassword1">Book file  <span style="color:#FF0000;">(PDF/DOCX)*</span> </label>
+          <label for="exampleInputPassword1">Book file  <span style="color:#FF0000;">(EPUB Books only)*</span> </label>
           <input type="file" class="form-control" id="bookFile" name="bookFile" placeholder=" Book File" required="">
         </div>
         

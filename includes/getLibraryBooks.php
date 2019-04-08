@@ -2,6 +2,7 @@
 require_once "config.php";
 
 
+
 if (! (isset($_GET['pageNumber']))) {
     $pageNumber = 1;
 } else {
@@ -36,7 +37,8 @@ $results = mysqli_query($con, $sqlQuery);
                         ?>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 ">
                     	<div class="book-wrap">
-                      <a href="<?php echo str_replace("../","",$data['book_content'])?>" target="_blank">
+                        
+                      <a href="epubreader.php?C=<?php echo base64_encode($data['id']); ?>" target="_blank">
 									<img src="<?php echo str_replace("../","",$data['book_cover'])?>" alt="Book cover" class="img-responsive" style="width:145px;height:100px;display:block;">
 									<div class="overlay">
 										<div class="text"><?php echo $data['book_title']?></div>
@@ -51,6 +53,8 @@ $results = mysqli_query($con, $sqlQuery);
                 ?>
                 <!-- Next -->
             </div>
+
+
     
 <br> <br>
                 

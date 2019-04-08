@@ -1,68 +1,220 @@
-<?php
-function make_books($glob=array(), $ext='epub') {
-	foreach ($glob as $b) {
-		$p=<<<b
-<?php
-	require_once 'eKatab/eKatab.class.php';
-	new eKatab("$b");
-?>
-b
-;
-		$file=basename($b, '.'.$ext).'.php';
-		if (!is_file($file)) { file_put_contents($file, $p); }
-		echo '<li><a data-ajax="false" href="'.rawurlencode($file).'"  data-transition="flip">'.basename($b, '.'.$ext)."</a></li>";
-	}
-}
+<!doctype html>
+<html lang="en">
 
-?>
+<head>
+  <meta charset="UTF-8">
+  <title>Rasmed Publications Library</title>
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/rasmed_favicon.png" type="image/x-icon">        
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  	  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">	
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">	  	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+  <header id="intro">
+    <article class="fullheight">
+      <div class="hgroup">
+        <h1>Rasmed Publications</h1>
+        <h2>Publisher of progress books</h2>
+        <p><a href="#welcome"><img src="images/misc/arrow.png" alt="down arrow"></a></p>
+      </div>
+    </article>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-    <title>eKatab ebook Reader</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.css" />
-	<script src="js/jquery.js"></script>
-	<script src="js/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript">
-jQuery(function ($) {
- //HTML
+    <nav id="nav">
+      <div class="navbar">
+        <div class="brand"><a href="#welcome">Rasmed <span>Publications</span></a></div>
+        <ul>
+          <!-- <li><a class="icon rooms" href="#hotelinfo"><span><i class="fa fa-home"></i>&nbsp;&nbsp;&nbsp; Home</span></a></li>
+          <li><a class="icon rooms" href="#rooms"><span><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;Library</span></a></li>
+          <li><a class="icon dining" href="#dining"><span>dining</span></a></li> -->
+        <li><a class="icon rooms" href="#hotelinfo"><span><i class="fa fa-home"></i>&nbsp;&nbsp;&nbsp; Home</span></a></li>
+            <li><a class="icon rooms" href="library.php"><span><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;Library</span></a></li>
+        </ul>
+      </div><!-- navbar -->
+    </nav>
+  </header>
+<main id="wrapper">
+  <div class="scene" id="welcome">
+    <article class="content">
+      <div class="gallery">
+        <img src="images/2.jpg" alt="Intro Gallery Room Sample Pictures">
+        <img src="images/activity-3.jpg" alt="Intro Gallery Pool Sample Pictures">
+        <img src="images/catalogue-primary-b-102.jpg" alt="Intro Gallery Dining Sample Pictures">
+        <img src="images/catalogue-primary-b-131.jpg" alt="Intro Gallery Attractions Sample Pictures">
+        <img class="hidesm" src="images/cca-cover4.jpg" alt="Intro Gallery Dining Sample Pictures">
+      </div>
+      <h1>Welcome to Rasmed&nbsp;Publications</h1>
+      <p>The original Landon perseveres after 50 years in the heart of West London. The West End neighborhood has something for everyone—from theater to dining to historic sights. And the not-to-miss Rooftop Cafe is a great place for travelers and locals to engage over drinks, food, and good&nbsp;conversation. &nbsp;To learn more about the Landon Hotel in the West End, browse our website and <a href="files/landon_information_sheet_London.pdf">download our handy information sheet</a>.</p>
+    </article>
+  </div><!-- welcome -->
+  <div class="scene" id="hotelinfo">
+    <article class="heading">
+      <h1>Essential Info</h1>
+    </article>
+    <article id="usefulinfo">
+      <section id="arrivalinfo">
+        <h2>Arrival Information</h2>
+        <ul>
+          <li><strong>Check-in:</strong> 3:00 PM</li>
+          <li><strong>Check-out:</strong> 11:00 AM</li>
+          <li><strong>Parking:</strong> Self-parking in the underground garage is ￡15 per day and valet-parking is ￡50 per day.</li>
+          <li><strong>Airport Shuttle:</strong> Our complimentary airport shuttles leave every hour on the hour, and make trips to Heathrow and Gatwick airports.</li>
+          <li><strong>Trains:</strong> The nearest Underground station is at Leicester Square.</li>
+          <li><strong>Pet Policy:</strong> Pets of all sizes and types are allowed in designated pet rooms, and the specified common areas. Service animals are allowed everywhere.</li>
+        </ul>
+      </section>
+      <section class="checklist" id="services">
+        <h2>Services and Amenities</h2>
+        <p>Our services and amenities are designed to make your travel easy, your stay comfortable, and your experience one-of-a-kind.</p>
+        <ul>
+          <li>Indoor pool</li>
+          <li>24-hour fitness center</li>
+          <li>Massage therapy</li>
+          <li>Full service spa</li>
+          <li>In-room jacuzzi tubs</li>
+          <li>Rooftop café  &amp; smoothie bar</li>
+          <li>Coffee bar  &amp; pastry shop</li>
+          <li>Traditional continental breakfast</li>
+          <li>24-hour concierge service</li>
+          <li>Business center</li>
+          <li>Complimentary wireless service</li>
+          <li>Laundry &amp; dry cleaning service</li>
+          <li>Daily paper</li>
+          <li>Certified "green" hotel</li>
+          <li>Pet-friendly rooms  &amp; common areas</li>
+        </ul>
+      </section>
+      <section class="checklist" id="accessibility">
+        <h2>Accessibility</h2>
+        <p>We're committed to maintaining the same quality of service for every individual. We offer the following facilities for those with special needs:</p>
+        <ul>
+          <li>Grab bars on tub walls</li>
+          <li>Shower chairs</li>
+          <li>Hand held shower sprayers</li>
+          <li>Higher toilets &amp; toilet modifiers</li>
+          <li>Lower sink faucet handles</li>
+          <li>Wheelchair clearance under sinks &amp; vanity</li>
+          <li>Lower racks in closet</li>
+          <li>TDD machines</li>
+          <li>Telephone light signalers  &amp; smoke alarms</li>
+          <li>Telephone amplification handsets</li>
+          <li>Closed captioned television converters</li>
+          <li>Vibrating alarm clocks</li>
+          <li>Telephones with volume control</li>
+        </ul>
+      </section>
+    </article>
+    <article id="greenprogram">
+      <h2>Landon Green Program</h2>
+      <p><strong>The Landon Hotel - London</strong> was recently renovated, and we considered the impact on the earth the entire way. From green building materials, to solar power, to energy-friendly lighting and appliances throughout the hotel - we’re saving energy in every socket, outlet, and switch. We’ve also initiated a recycling and composting program that reduces the load to local landfills, while providing valuable raw material for use in new products, or in the case of compost, for use in local gardens and landscapes.</p>
+    </article>
+  </div><!-- hotelinfo -->
+  <div class="scene" id="rooms">
+    <header>
+      <h1>Guest Rooms</h1>
+      <p>Our guest rooms feature sumptuous classic furnishings that evoke visions of London’s rich and long-standing tradition of royalty. While our rooms are decked out in classic design, they each have a modern flair, and contain all the modern comforts expected in today’s luxury hotels. We’ve named our rooms for the notable public squares and circuses around which the West End is laid&nbsp;out.</p>
+    </header>
+    <article class="room fullheight" id="piccadilly">
+      <section class="content">
+        <h1>Piccadilly</h1>
+        <p>Designed to be our economy room, for those who will be spending more time seeing the sights, and less time hitting the hay. The Piccadilly room has a smaller footprint, but maintains the accommodations of some of our more deluxe rooms.</p>
+      </section>
+    </article>
+    <article class="room fullheight" id="cambridge">
+      <section class="content">
+        <h1>Cambridge</h1>
+        <p>This room features a king bed, with a Comfort-Plus mattress, covered in 400-thread Egyptian cotton sheets. The Cambridge room is decorated in tasteful and warm muted tones, that are soothing on the eyes and senses.</p>
+      </section>
+    </article>
+    <article class="room fullheight" id="westminster">
+      <section class="content">
+        <h1>Westminster</h1>
+        <p>This room is available with a king or two double beds, and is furnished with our Premiere London collection – the softest and most luxurious bed and bath linens.</p>
+      </section>
+    </article>
+    <article class="room fullheight" id="oxford">
+      <section class="content">
+        <h1>Oxford</h1>
+        <p>Our Oxford suites are some of the prettiest and most romantic rooms around and are perfect for honeymoons. All of these feature canopy beds, lots of windows, and spare no modern comfort or convenience, including a TLX media system.</p>
+      </section>
+    </article>
+    <article class="room fullheight" id="victoria">
+      <section class="content">
+        <h1>Victoria</h1>
+        <p>Traveling with the family? Our spacious Victoria suites, with breathtaking views of the city, are the perfect choice. These corner rooms are furnished with a king or two double beds, and have a sofa with a comfortable pullout bed.</p>
+      </section>
+    </article>
+    <article class="room fullheight" id="manchester">
+      <section class="content">
+        <h1>Manchester</h1>
+        <p>The Manchester Executive Suite, is popular with business travelers the world over. These two-room suites feature a king-size bed, living room with leather recliner, full-sized executive desk, and leather desk chair.</p>
+      </section>
+    </article>
+  </div><!-- rooms -->
+  <div class="scene" id="dining">
+    <article id="areadining">
+      <h1>Dining in the Area</h1>
+      <p>The West End is a foodie’s paradise, and the Landon Hotel is in the center of it all. With options for traditional English, Italian, Indian, American, Chinese, and French cuisines, all within two blocks of the hotel, and a variety of tasty culinary delights from many other countries, within a half-mile radius, the only trouble you’ll have is choosing! </p>
+    </article>
+    <article id="inhotel">
+      <section id="rooftopcafe">
+        <h2>Rooftop Caf&eacute;</h2>
+        <img src="images/hotel/dining_rooftop.jpg" alt="Dining">
+        <p>Landon Rooftop Caf&eacute; is the destination for five star dining. Our master chefs are trained to meet special dietary needs, and we offer a range of vegetarian/vegan, kosher, gluten, and dairy free selections to accommodate our guests. Whether you&rsquo;re in the mood for our award winning roast beef, fresh select salads, appetizing lunch entrees, or delectable desserts, we have you covered.</p>
+      </section>
 
+      <section id="smoothiebar">
+        <h2>Smoothie Bar</h2>
+        <img src="images/hotel/dining_smoothiebar.jpg" alt="Dining">
+        <p>The Rooftop Smoothie Bar gives you panoramic views of the city, where you can have one of our specialty smoothies while you wait for your table. Our top mixologists are constantly bringing new and unique offerings to our smoothie menu. We have a wide range of locally grown, fresh fruit and vegetable choices to make you custom blended drinks.  We also have seasonal selections that you won’t find anywhere else.</p>
+      </section>
 
-});
-	</script>
- </head>
- <body>
-	<div data-role="page" data-theme="b" id="$rest">
-	 <div data-role="header"  data-position="fixed"><h1 class="title">eBooks Avalible</h1></div>
-	 <div data-role="content" id="html">
-
-	  <div id="epub1" data-role="collapsible" data-collapsed="false" data-theme="a" data-content-theme="b">
-		 <h3>ePub ebooks </h3>
-		 <ul data-role="listview"  data-inset="true">
-      <?php make_books(glob('*.epub'), 'epub'); ?>
-     </ul>
+      <section id="coffeebar">
+        <h2>Breakfast &amp; Coffee Bar</h2>
+        <img src="images/hotel/dining_lattes.jpg" alt="Dining">
+        <p>Our traditional breakfast and coffee bar, located adjacent to our lounge, are the perfect way to start your morning. We offer a wide selection of seasonal fresh fruit, a variety of cereals, croissants, crusty sourdough bread, cook-to-order eggs and omelettes, fresh juice, coffee, and teas. Breakfast is served from 7:00 am to 10:00 am daily. Our coffee bar is open until 6:30 pm daily.</p>
+      </section>
+    </article><!-- inhotel -->
+    <article id="roomservice">
+      <h1>Room Service</h1>
+      <p>If you’d rather stay in your room and enjoy a quiet evening in, or a relaxing breakfast in bed, room service options are available for all of our dining choices.</p>
+    </article>
+  </div><!-- dining -->
+  <div class="scene" id="events">
+      <article class="event fullheight" id="businessmeetings">
+        <div class="content">
+          <h2>Business Meetings</h2>
+          <p>Our hotel boasts wireless Internet in every common room, and guest room, including the dining area and lobby. And, we have a state-of-the-art meeting room with video projectors, high definition video screens, and advanced sound technology.</p>
+        </div><!-- content -->
+      </article><!-- article -->
+      <article class="event fullheight" id="weddings">
+        <div class="content">
+          <h2>Weddings &amp; Social Events</h2>
+          <p> When you entrust us to handle your wedding, or other event, you’re putting your faith in our professional reputation – and that’s not a responsibility we take lightly. </p>
+        </div><!-- content -->
+      </article><!-- article -->
+  </div><!-- events -->
+  <div class="scene fullheight" id="attractions">
+    <article class="content">
+      <h1>Local Attractions</h1>
+        <p>Whether you’re a theater enthusiast, enjoy epic shopping, or love to stroll and people watch, London’s West End has an endless opportunity to partake. The heart of London’s "Theatreland" offering the best in drama, comedy, and musical productions.</p>
+    </article>
+  </div><!-- attractions -->
+</main>
+<footer class="scene">
+  <article class="content">
+    <div id="socialmedia">
+      <ul class="group">
+        <li><a href="https://twitter.com/"><img class="icon" src="images/socialmedia/twitter.png" alt="icon for twitter" /></a></li>
+        <li><a href="http://www.facebook.com/"><img class="icon" src="images/socialmedia/facebook.png" alt="icon for facebook" /></a></li>
+        <li><a href="http://www.youtube.com/"><img class="icon" src="images/socialmedia/youtube.png" alt="icon for youtube" /></a></li>    
+      </ul>      
     </div>
+  </article>
+</footer>
+  <script src="js/script.js"></script>
+</body>
 
-    <div id="ibooks" data-role="collapsible" data-collapsed="true" data-theme="a" data-content-theme="b">
-     <h3>iBooks (ibooks) ebooks, not fully supported</h3>
-     <ul data-role="listview"   data-inset="true">
-      <?php make_books(glob('*.ibooks'), 'ibooks'); ?>
-     </ul>
-    </div>
-
-    <div id="ipa" data-role="collapsible" data-collapsed="true" data-theme="a" data-content-theme="b">
-     <h3>iPhone app (epub) ebooks</h3>
-     <backquote>These books are no longer avalible in the Apps store, stopped working properly in iOS6</backquote>
-     <ul data-role="listview"  data-inset="true">
-      <?php make_books(glob('*.ipa'), 'ipa');  ?>
-     </ul>
-    </div>
-
-
-
-	 </div>
-	</div>
- </body>
 </html>
