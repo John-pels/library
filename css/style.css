@@ -428,6 +428,7 @@ header #nav .navbar .brand a {
     /* line 17, ../../../components/sass/modules/_nav.scss */
     header #nav .navbar .brand a {
         font-size: 1.2em;
+        line-height: 3;
     }
     /* line 27, ../../../components/sass/modules/_nav.scss */
     header #nav .navbar .brand a span {
@@ -523,12 +524,13 @@ header #nav .navbar ul li a:hover {
     background-color: #EFC94C;
     color: #063642;
     cursor: pointer;
+
 }
 
 @media (min-width: 0) and (max-width: 650px) {
     /* line 36, ../../../components/sass/modules/_nav.scss */
     header #nav .navbar ul li a {
-        padding: 10px 18px;
+        padding: 15px 18px;
     }
     /* line 62, ../../../components/sass/modules/_nav.scss */
     header #nav .navbar ul li a::after {
@@ -536,8 +538,13 @@ header #nav .navbar ul li a:hover {
         display: block;
     }
     /* line 66, ../../../components/sass/modules/_nav.scss */
-    header #nav .navbar ul li a span {
-        display: none;
+    header #nav .navbar ul li a span{
+        /* display: none; */
+    }
+}
+@media (min-width: 651px) and (max-width: 886px) {
+    header #nav .navbar ul li a {
+        padding: 22px 18px;
     }
 }
 

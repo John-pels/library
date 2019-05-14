@@ -73,7 +73,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
 <img src="images/rasmed_favicon.png" alt="Rasmed" style="wdith:30px;height:30px;margin:10px;cursor:pointer;margin-bottom:20px;"> <span style="color:white;font-size:25px;font-family:'Oswald',sans-serif;margin-right:10px;"> Rasmed Publications</span>
-      <a class="navbar-brand" href="index.php"></a>
+      <!-- <a class="navbar-brand" href="index.php"></a> -->
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="index.php" style="color:white;font-family:'Open Sans Condensed', sans-serif;font-size:20px;">Home</a></li>
@@ -91,7 +91,6 @@
     </form>
   </div>
 </nav>
-<font color='red'>sasakjsah</font>
 <div id="container">
    
         <div id="inner-container">

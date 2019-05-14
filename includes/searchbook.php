@@ -28,7 +28,7 @@ if (isset($_POST['search'])) {
   			}
   		}
   		else{
-  			echo "<div class='alert alert-warning' style='font-size: 30px; font-weight:700;text-align:center;'>No Book found in the Library</div>";
+  			echo "<div class='alert alert-warning' style='font-size: 30px; font-weight:700;text-align:center; margin-top:80px;'>No Book found in the Library</div>";
   		}
   	}
   		?>

@@ -1,11 +1,11 @@
 <?php
 require_once "../includes/session.php";
 require_once "../includes/script.php";
-$admin_id = $_SESSION['id'];
-$user = mysqli_query($con, "SELECT * FROM admin where id = '$admin_id'");
-$user_rows = mysqli_num_rows($user);
-$fetch_user = mysqli_fetch_array($user);
-$user_name = $fetch_user['username'];
+// $admin_id = $_SESSION['id'];
+// $user = mysqli_query($con, "SELECT * FROM admin where id = '$admin_id'");
+// $user_rows = mysqli_num_rows($user);
+// $fetch_user = mysqli_fetch_array($user);
+// $user_name = $fetch_user['username'];
 ?>
 
 
@@ -125,7 +125,7 @@ $user_name = $fetch_user['username'];
 		<div class="main-content">
 		 
 			<div class="title">
-		<p>Welcome! &nbsp;&nbsp;<span><?php echo $user_name;?></span></p>	
+		<p>Welcome! &nbsp;&nbsp;<span><?php echo $_SESSION['username'];?></span></p>	
 			</div>
 			</div>
 			<div class="main">
@@ -291,7 +291,7 @@ $user_name = $fetch_user['username'];
 		</div>
 		   <div class="form-group">
           <label for="exampleInputname">Password</label>
-          <input type="text" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Password" required="">
+          <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Password" required="">
         </div>
         
         <button type="submit" class="btn btn-success" name="addAdmin" style="width: 100%;">Add</button>
