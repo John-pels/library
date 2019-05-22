@@ -262,11 +262,7 @@ require_once "../includes/script.php";
 					</select>
         </div>
         <div class="form-group">
-<<<<<<< HEAD
           <label for="exampleInputTitle">Book Cover <span style="color:#FF0000;">(JPG,JPEG and PNG only)*</span></label>
-=======
-          <label for="exampleInputTitle">Book Cover</label>
->>>>>>> 017557ef22d78b38bfde24e29e2bcf15b7e324f0
           <input type="file" class="form-control" id="bookCover" name="bookCover" placeholder="Book Cover"  required="">
         </div>
          <div class="form-group">
@@ -323,21 +319,13 @@ require_once "../includes/script.php";
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-<<<<<<< HEAD
         <h5 class="modal-title" id="exampleModalLabel"><strong style="font-size:25px;">Uploaded Books Categories</strong> </h5>
-=======
-        <h5 class="modal-title" id="exampleModalLabel"><strong style="font-size:25px;">Uploaded Books Category</strong> </h5>
->>>>>>> 017557ef22d78b38bfde24e29e2bcf15b7e324f0
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-<<<<<<< HEAD
 		<div style="font-size:25px;">Primary School Books:  <span style="background:#FF0000;border-radius:10px;font-weight:900; color:#FFF; font-size:25px;"><?php echo $primary_rows;?></span></div>
-=======
-		<p style="font-size:25px;">Primary School Books:  <span style="background:#FF0000;border-radius:10px;font-weight:900; color:#FFF; font-size:25px;"><?php echo $primary_rows;?></span></p>
->>>>>>> 017557ef22d78b38bfde24e29e2bcf15b7e324f0
         <p style="font-size:25px;">Secondary School Books:  <span style="background:#FF0000;border-radius:10px;font-weight:900; color:#FFF; font-size:25px;"><?php echo $secondary_rows;?></span></p>
         <p style="font-size:25px;">Tertiary School Books:  <span style="background:#FF0000;border-radius:10px;font-weight:900; color:#FFF; font-size:25px;"><?php echo $tertiary_rows;?></span></p>		
       </div>
