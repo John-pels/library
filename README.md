@@ -12,7 +12,7 @@ Library - This is a Web Application that allow users to access and read as many 
 4. create database and name it 'tri_exam'
 5. import the database from the db folder.
 6. Copy the whole folder and paste it into the htdocs folder in Xampp root folder.
-7. Now open your browser and visit https://localhost/examination
+7. Now open your browser and visit https://localhost/library
 
 **Notes**
 &mdash; The folder's name is very important as it is what you will reference in the browser. If you change the folder's name,
