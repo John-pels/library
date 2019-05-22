@@ -30,7 +30,7 @@ if (isset($_GET['C'])) {
   <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   <style>
-  body {
+   body {
     background: #D5DAE5;
   }
   .container {
