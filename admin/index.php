@@ -29,20 +29,12 @@ if ( isset($_SESSION['id']) ) {
     <div class=" col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-4 col-sm-12 d-flex">
  <div class="form-popup" id="myForm">
             <form action="" class="form-container" method="post" enctype="multipart/form-data">
-<<<<<<< HEAD
                         <center><img src="../images/rasmedlogo-01.png" width="200" height="50" class="img-responsive"></center>
-=======
-                        <center><img src="../images/rasmedlogo-01.jpg" width="200" height="50" class="img-responsive"></center>
->>>>>>> 017557ef22d78b38bfde24e29e2bcf15b7e324f0
                         
                 <h2 style="color: #23415C; text-align: center;">Administrator Login</h2>
                             <div><?php echo $error_message; ?></div> 
                 <label for="email"><b>Email</b></label>
-<<<<<<< HEAD
                 <input type="text" placeholder="Enter Username" name="username" required tabindex="1" autofocus>
-=======
-                <input type="text" placeholder="Enter Username" name="username" required tabindex="1">
->>>>>>> 017557ef22d78b38bfde24e29e2bcf15b7e324f0
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required tabindex="2">
