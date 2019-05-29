@@ -1,17 +1,14 @@
 <?php
 require_once "../includes/session.php";
 require_once "../includes/script.php";
-// $admin_id = $_SESSION['id'];
-// $user = mysqli_query($con, "SELECT * FROM admin where id = '$admin_id'");
-// $user_rows = mysqli_num_rows($user);
-// $fetch_user = mysqli_fetch_array($user);
-// $user_name = $fetch_user['username'];
+
 ?>
 
 
 <!DOCTYPE html>
 <html>
 	<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +17,6 @@ require_once "../includes/script.php";
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">	  	
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="../images/rasmed_favicon.png" type="image/x-icon">        
 		<link rel="stylesheet" href="../css/admin_dashboard.css">
@@ -165,7 +161,7 @@ require_once "../includes/script.php";
   
 			</div>
 		</div>
-    <script src="js/jquery.js" type="text/javascript"></script>
+    <!-- <script src="js/jquery.js" type="text/javascript"></script> -->
 
 <script>
     $("#search").keyup(function(){
@@ -194,7 +190,7 @@ require_once "../includes/script.php";
                     setTimeout(function(){
                       //  $("#results").hide();
                         $("#results").html(data);
-                    },200);
+                    },100);
                     if (data=='No book found') {
                         $("#results").html("No Book Found");
 
@@ -233,7 +229,8 @@ require_once "../includes/script.php";
     $(document).ready(function() {
         showRecords(10, 1);
     });
-         </script>   
+         </script>  
+        
 	</body>
 </html>
 <!--For Addition of more books-->
@@ -247,10 +244,11 @@ require_once "../includes/script.php";
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" enctype="multipart/form-data">
+        <p class="statusMsg"></p>
+        <form  enctype="multipart/form-data" id="fupForm" method="POST">
         <div class="form-group">
           <label for="exampleInputname">Book Title</label>
-          <input type="text" class="form-control" id="bookTitle" name="bookTitle" aria-describedby="bookTitle" placeholder="Book Title" required="">
+          <input type="text" class="form-control" id="bookTitle" name="bookTitle" aria-describedby="bookTitle" placeholder="Book Title" >
 		</div>
 		   <div class="form-group">
           <label for="exampleInputname">Book Category</label>
@@ -263,14 +261,14 @@ require_once "../includes/script.php";
         </div>
         <div class="form-group">
           <label for="exampleInputTitle">Book Cover <span style="color:#FF0000;">(JPG,JPEG and PNG only)*</span></label>
-          <input type="file" class="form-control" id="bookCover" name="bookCover" placeholder="Book Cover"  required="">
+          <input type="file" class="form-control" id="bookCover" name="bookCover" placeholder="Book Cover" >
         </div>
          <div class="form-group">
           <label for="exampleInputPassword1">Book file  <span style="color:#FF0000;">(EPUB Books only)*</span> </label>
-          <input type="file" class="form-control" id="bookFile" name="bookFile" placeholder=" Book File" required="">
+          <input type="file" class="form-control" id="bookFile" name="bookFile" placeholder=" Book File">
         </div>
         
-        <button type="submit" class="btn btn-success" name="submitBook" style="width: 100%;">Upload</button>
+        <button type="submit" class="btn btn-success submitBtn" name="submitBtn" style="width: 100%;">Upload</button>
 </form>
       </div>
       <div class="modal-footer">

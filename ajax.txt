@@ -1,0 +1,79 @@
+ <!-- For Books Upload  -->
+
+         <script>
+$(document).ready(function(e){
+    $("#fupForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '../includes/insertData.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(msg){
+                $('.statusMsg').html('');
+                if(msg =='ok'){
+                    $('#fupForm')[0].reset();
+                    $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                }
+                else{
+                    $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+    
+    //file type validation
+    $("#file").change(function() {
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+            $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Please select a valid image file (JPEG/JPG/PNG).</span>').hide(5000);
+            // console.log('Please select a valid image file (JPEG/JPG/PNG).');
+            $("#file").val('');
+            return false;
+        }
+    });
+});
+</script>
+
+
+
+
+*******************PHP*******************
+<?php
+if(!empty($_POST['bookTitle']) || !empty($_POST['bookCategory']) || !empty($_FILES['file']['name'])){
+    $uploadedFile = '';
+    if(!empty($_FILES["file"]["type"])){
+        $fileName = time().'_'.$_FILES['file']['name'];
+        $valid_extensions = array("jpeg", "jpg", "png");
+        $temporary = explode(".", $_FILES["file"]["name"]);
+        $file_extension = end($temporary);
+        if((($_FILES["hard_file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg"))  && in_array($file_extension, $valid_extensions)){
+            $sourcePath = $_FILES['file']['tmp_name'];
+            $targetPath = "../bookContents/".$fileName;
+            if(move_uploaded_file($sourcePath,$targetPath)){
+                $uploadedFile = $fileName;
+            }
+        }
+    }
+    
+    $bookTitle = $_POST['bookTitle'];
+    $bookCategory = $_POST['bookCategory'];
+    
+    //include database configuration file
+    include_once 'config.php';
+    
+    //insert form data in the database
+    $insert = $con->query("INSERT library (book_title,book_category,book_cover,book_content) VALUES ('".$bookTitle."','".$bookCategory."','".$bookCategory."','".$uploadedFile."')");
+    
+    echo $insert?'ok':'err';
+}

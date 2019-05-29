@@ -9,7 +9,7 @@ Library - This is a Web Application that allow users to access and read as many 
     You can download here https://www.apachefriends.org
 
 3. After installation,start the server, Open your browser and visit https://localhost/phpmyadmin
-4. create database and name it 'tri_exam'
+4. create database and name it 'books_library'
 5. import the database from the db folder.
 6. Copy the whole folder and paste it into the htdocs folder in Xampp root folder.
 7. Now open your browser and visit https://localhost/library
