@@ -8,7 +8,7 @@ if (! (isset($_GET['pageNumber']))) {
     $pageNumber = $_GET['pageNumber'];
 }
 
-$perPageCount = 5;
+$perPageCount = 20;
 $rowCount = "";
 
 $sql = "SELECT * FROM library  WHERE 1";
@@ -39,7 +39,7 @@ $results = mysqli_query($con, $sqlQuery);
                 <div class="col-lg-2 col-md-2 col-sm-2  col-xs-6 ">
                     	<div class="book-wrap">
                       <a href="epubread.php?C=<?php echo base64_encode($data['id']); ?>" target="_blank">
-									<img src="<?php echo $data['book_cover']?>" alt="Book cover" class="img-responsive" style="width:145px;height:100px;display:block;">
+									<img src="<?php echo $data['book_cover']?>" alt="Book cover" class="img-thumbnail" style="width:145px;height:100px;display:block;">
 									<div class="overlay">
 										<div class="text"><?php echo $data['book_title']?></div>
 									</div>

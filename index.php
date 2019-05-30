@@ -19,13 +19,13 @@
     <link rel="shortcut icon" href="images/rasmed_favicon.png" type="image/x-icon">        
     <style>
       #inner-container {
-    width: 1000px;
-    max-width: 100%;
+    width: 100%;
     padding: 20px 0 70px 0;
     height: 100%;
 }
 
 #container {
+  width: 100%;
     min-height: 100%;
     padding: 20px;
     border-radius: 2px;
@@ -77,7 +77,7 @@
       <!-- <a class="navbar-brand" href="index.php"></a> -->
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="index.php" style="color:white;font-family:'Open Sans Condensed', sans-serif;font-size:20px;">Home</a></li>
+      <!-- <li ><a href="index.php" style="color:white;font-family:'Open Sans Condensed', sans-serif;font-size:20px;">Home</a></li> -->
      
     </ul>
     <form class="navbar-form navbar-right" action="" style="margin-top:10px;">
@@ -95,7 +95,7 @@
 <div id="container">
    
         <div id="inner-container">
-            <div id="showsearchR"></div>
+            <!-- <div id="showsearchR"></div> -->
 
             <div id="results"></div>
             
@@ -114,7 +114,7 @@
             data: "pageNumber=" + pageNumber,
             cache: false,
     		beforeSend: function() {
-                $('#loader').html('<img src="images/animated_spinner.gif" alt="reload" width="50" height="50" style="position:absolute; top:50%;left:50%;">');
+                $('#loader').html('<img src="images/animated_spinner.gif" alt="" width="50" height="50" style="position:absolute; top:50%;left:50%;">');
     			
             },
             success: function(html) {

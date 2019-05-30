@@ -15,7 +15,7 @@ if (isset($_POST['search'])) {
                     	<div class="book-wrap">
                     		<a href="epub2.php?C=<?php echo base64_encode($fetchbooks['id']); ?>" target="_blank">
 
-                   									<img src="<?php echo ($fetchbooks['book_cover'])?>" alt="Book cover" class="img-responsive" style="width:145px;height:100px;display:block;">
+                   									<img src="<?php echo ($fetchbooks['book_cover'])?>" alt="Book cover" class="img-thumbnail" style="width:145px;height:100px;display:block;">
 									<div class="overlay">
 										<div class="text"><?php echo $fetchbooks['book_title']?></div>
 									</div>
@@ -28,7 +28,7 @@ if (isset($_POST['search'])) {
   			}
   		}
   		else{
-  			echo "<div class='alert alert-info' style='font-size: 30px; font-weight:700; text-align:center; margin-left:500px !important;'><b>\"$search\"</b> not found in the Library</div>";
+  			echo "<div class='alert alert-info' style='font-size: 30px; font-weight:700; text-align:center; margin-left:250px !important;'><b>\"$search\"</b> not found in the Library</div>";
   		}
   	}
   		?>

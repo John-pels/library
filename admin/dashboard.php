@@ -22,8 +22,7 @@ require_once "../includes/script.php";
 		<link rel="stylesheet" href="../css/admin_dashboard.css">
 		<style>
       #inner-container {
-    width: 1000px;
-    max-width: 100%;
+    width: 100%;
     padding: 20px 0 70px 0;
     height: 100%;
 }
@@ -230,6 +229,7 @@ require_once "../includes/script.php";
         showRecords(10, 1);
     });
          </script>  
+          
         
 	</body>
 </html>
@@ -278,6 +278,47 @@ require_once "../includes/script.php";
     </div>
   </div>
 </div>
+<script>
+           
+            $("#fupForm").submit(function(e){
+              e.preventDefault();
+              
+                $.ajax({
+                  type: 'POST',
+                url: '../includes/insertData.php',
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data){
+
+                  $('.submitBtn').html("Please wait..").attr("disabled",true);
+                  console.log(data);
+                  // setTimeout(function(){
+                    if(data == "uploaded"){
+                    $(".statusMsg").html("<div class='alert alert-success'>Book Cover and Content uploaded successfully!</div>");
+                    $(".statusMsg").show();
+                  $('.submitBtn').html("Reloading..").attr("disabled",true);
+                    setTimeout(function(){
+                     window.location.reload(true);
+                    },6000);
+                  }
+                   if(data == "error"){
+                    $(".statusMsg").html("<div class='alert alert-danger'>Error in Uploading Book Cover and Content, Please try again Later</div>");
+                    $(".statusMsg").show();
+                  $('.submitBtn').html("Reloading..").attr("disabled",true);
+                     setTimeout(function(){
+                     window.location.reload(true);
+                    },6000);
+                    }
+                  // },6000);
+                }
+              });
+                 
+             
+            });
+           
+         </script>
 
 
 <!--For Addition of Administrator-->
